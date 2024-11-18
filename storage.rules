@@ -1,0 +1,30 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    // Allow users to upload their own tweet media
+    match /tweets/{userId}/{imageId} {
+      allow read: if true;
+      allow write: if isSignedIn() 
+        && isOwner(userId)
+        && request.resource.size < 5 * 1024 * 1024 // 5MB
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    // Allow users to upload their own profile pictures
+    match /users/{userId}/profile/{imageId} {
+      allow read: if true;
+      allow write: if isSignedIn() && isOwner(userId)
+        && request.resource.size < 2 * 1024 * 1024 // 2MB
+        && request.resource.contentType.matches('image/.*');
+    }
+  }
+}
