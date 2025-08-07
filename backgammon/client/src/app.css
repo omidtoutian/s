@@ -1,0 +1,23 @@
+body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #121212; color: #eaeaea; }
+.app { padding: 16px; }
+.lobby .name-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.lobby input { padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1e1e1e; color: #eaeaea; }
+.lobby button { padding: 8px 12px; border: none; background: #4f46e5; color: white; border-radius: 6px; cursor: pointer; }
+.game-list { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 10px; }
+.game-item { background: #1e1e1e; padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+
+.game .topbar { display: flex; gap: 16px; align-items: center; margin-bottom: 12px; }
+.board { background: #0b0b0b; border: 1px solid #333; border-radius: 10px; padding: 10px; }
+.row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; }
+.point { background: #222; border-radius: 6px; min-height: 90px; position: relative; padding: 2px; cursor: pointer; }
+.point.light { background: #2a2a2a; }
+.point.dark { background: #1f1f1f; }
+.point.selected { outline: 2px solid #22d3ee; }
+.point.highlight { box-shadow: inset 0 0 0 2px #94a3b8; }
+.stack { display: flex; flex-direction: column; gap: 2px; padding: 4px; }
+.checker { width: 18px; height: 18px; border-radius: 50%; }
+.checker.a { background: #f59e0b; }
+.checker.b { background: #22c55e; }
+.idx { position: absolute; bottom: 2px; right: 4px; font-size: 10px; color: #888; }
+.mid { display: flex; justify-content: space-between; padding: 8px 4px; }
+.winner { margin-top: 12px; font-size: 18px; color: #34d399; }
